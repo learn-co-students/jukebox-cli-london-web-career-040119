@@ -11,7 +11,6 @@ songs = [
   "Harry Chapin - Cats in the Cradle",
   "Amos Lee - Keep It Loose, Keep It Tight"
 ]
-binding.pry
 
 def help
   puts "I accept the following commands:
@@ -50,4 +49,24 @@ end
 
 def exit_jukebox
   puts "Goodbye"
+end
+
+def run(songs)
+  help
+
+  user_input = ""
+
+  puts "Please enter a command:"
+  user_input = gets.downcase.chomp
+
+  if user_input == "list"
+    list(songs)
+  elsif user_input == "play"
+    play(songs)
+  elsif user_input == "help"
+    help
+  elsif user_input == "exit"
+    exit_jukebox
+  end
+
 end
