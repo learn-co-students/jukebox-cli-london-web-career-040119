@@ -11,9 +11,9 @@ songs = [
   "Harry Chapin - Cats in the Cradle",
   "Amos Lee - Keep It Loose, Keep It Tight"
 ]
+binding.pry
 
 def help
-  binding.pry
   puts "I accept the following commands:
 - help : displays this help message
 - list : displays a list of songs you can play
@@ -21,9 +21,9 @@ def help
 - exit : exits this program"
 end
 
-def list
+def list(songs)
 
-  songs.each_with_index do |index, song|
+  songs.each_with_index do |song, index|
     puts "#{index + 1}. #{song}"
   end
 
@@ -32,13 +32,18 @@ end
 def play(songs)
 
   puts "Please enter a song name or number:"
-  users_input = gets.chomp
-  binding.pry
 
+  users_input = gets.chomp
   songs_numbers = (1..songs.length).to_a
 
-  if songs_numbers.include?(users_input)
-    binding.pry
+  if songs.include?(users_input)
+    song_name = users_input
+    puts "Playing #{song_name}"
+  elsif songs_numbers.include?(users_input.to_i)
+    song_name = users_input.to_i
+    puts "Playing #{songs[users_input.to_i - 1]}"
+  else
+    puts "Invalid input, please try again"
   end
 
 end
