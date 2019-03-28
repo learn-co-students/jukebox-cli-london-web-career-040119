@@ -44,7 +44,7 @@ def run(array)
     help
     command = ""
     while command
-        puts "Please enter command:"
+        puts "Please enter a command:"
         command = gets.chomp.downcase
         if command == "help"
             help
@@ -55,8 +55,9 @@ def run(array)
             play(array)
         elsif command == "exit"
             exit_jukebox
+            break
         else
-            list
+            help
         end
     end
 end
